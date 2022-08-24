@@ -10,7 +10,7 @@ import {
 import Colors from '../Colors';
 import Header from '../components/Header';
 
-const Accueil = () => {
+const Accueil = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -27,8 +27,11 @@ const Accueil = () => {
           <Text style={styles.buttonText}>Conducteur</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Passager</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Passager')}
+        >
+          <Text style={styles.buttonText}>Passagers</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

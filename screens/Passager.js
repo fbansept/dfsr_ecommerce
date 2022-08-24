@@ -4,7 +4,7 @@ import Colors from '../Colors';
 
 const Passager = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  return <Text>Passager</Text>;
+  return <Text>PassagerS</Text>;
 };
 
 export default Passager;
