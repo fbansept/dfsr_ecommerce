@@ -6,6 +6,11 @@
  * @flow strict-local
  */
 
+import {NavigationContainer} from '@react-navigation/native';
+import {
+  NativeStackView,
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack';
 import React from 'react';
 import {
   Button,
@@ -23,6 +28,9 @@ import {
 
 import Colors from './Colors';
 import Header from './components/Header';
+import Passager from './screens/Passager';
+import Accueil from './screens/Accueil';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -31,32 +39,18 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      >
-        <Header />
-        <View
-          style={[
-            {
-              backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            },
-            styles.container,
-          ]}
-        >
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Conducteur</Text>
-          </TouchableOpacity>
+  const Stack = createNativeStackNavigator();
 
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Passager</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+  return (
+    <SafeAreaProvider style={backgroundStyle}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Accueil" component={Accueil}></Stack.Screen>
+          <Stack.Screen name="Passager" component={Passager}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
