@@ -31,6 +31,7 @@ import Header from './components/Header';
 import Passager from './screens/Passager';
 import Accueil from './screens/Accueil';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import DetailVoyage from './screens/DetailVoyage';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -48,6 +49,10 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="Accueil" component={Accueil}></Stack.Screen>
           <Stack.Screen name="Passager" component={Passager}></Stack.Screen>
+          <Stack.Screen
+            name="Details voyage"
+            component={DetailVoyage}
+          ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
